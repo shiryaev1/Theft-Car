@@ -6,8 +6,6 @@ from django.shortcuts import redirect, render
 # from users.forms import SignUpForm
 
 
-
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -16,4 +14,5 @@ def signup(request):
             return redirect('post:post_create_url')
     else:
         form = UserCreationForm()
+
     return render(request, 'users/registration.html', {'form': form})
