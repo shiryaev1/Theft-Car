@@ -3,7 +3,7 @@ from announcement.models import Announcement
 from django.core.exceptions import ValidationError
 
 
-class PostForm(forms.ModelForm):
+class AnnouncementForm(forms.ModelForm):
 
     class Meta:
         model = Announcement
@@ -33,7 +33,9 @@ class PostForm(forms.ModelForm):
     #         raise ValidationError('Slug may not be "Create"')
     #     return new_slug
 
-    # def save(self, user):
-    #     post = super(PostForm, self).save(commit=False)
-    #     post.author = user
-    #     post.save()
+    def save(self, user):
+        announcement = super(AnnouncementForm, self).save(commit=False)
+        announcement.author = user
+
+        announcement.save()
+        return announcement
