@@ -13,7 +13,8 @@ def announcement_list(request):
 
 
 def user_page(request):
-    return render(request, 'users/user_page.html')
+    announcements = Announcement.objects.all()
+    return render(request, 'users/user_page.html', locals())
 
 
 class AnnouncementCreate(View):
