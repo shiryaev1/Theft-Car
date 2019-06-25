@@ -4,7 +4,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<link rel = "stylesheet" href="{% static '/css/my_profile.css' %}">
+<link rel = "stylesheet" href="{% static '/css/profile.css' %}">
 
 
 <!-- nav bar -->
@@ -106,20 +106,27 @@
                      </div>
                   </div>
                </div>
+                {% for announcement in announcements %}
                <div class="bs-callout bs-callout-danger">
-                  <h4>Summary</h4>
+                  <h4>Announcement</h4>
                   <p>
-                     {% for announcement in announcements %}
 
-                         {{ announcement.color }}
-                         {{ announcement.mark }}<br>
-                      {% endfor %}
+                       Mark: {{ announcement.mark }}<br>
+                       Model: {{ announcement.model }}<br>
+                       Year_of_issue: {{ announcement.year_of_issue }}<br>
+                       Number: {{ announcement.number }}<br>
+                       Date_theft: {{ announcement.date_theft }}<br>
+                       Description: {{ announcement.description }}<br>
+                       Author: {{ announcement.author }}<br>
+                       Created: {{ announcement.created }}<br>
                   </p>
                   <p>
                      Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis.
                      Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
                   </p>
                </div>
+              {% endfor %}
+
                <div class="bs-callout bs-callout-danger">
                   <h4>Research Interests</h4>
                   <p>

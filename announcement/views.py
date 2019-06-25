@@ -12,14 +12,17 @@ def announcement_list(request):
     return render(request, 'announcement/announcement_list.html', locals())
 
 
-def user_page(request):
-    announcements = Announcement.objects.all()
-    return render(request, 'users/user_page.html', locals())
+# def user_page(request):
+    # # if pk
+    # user = request.user
+    # announcements = Announcement.objects.filter(author_id=user.id)
+    # # announcements = Announcement.objects.all()
+    # return render(request, 'users/user_page.html', locals())
 
 
 class AnnouncementCreate(View):
 
-    def get(self,request):
+    def get(self, request):
         form = AnnouncementForm()
         return render(request, 'announcement/announcement.html',
                       context={'form': form})

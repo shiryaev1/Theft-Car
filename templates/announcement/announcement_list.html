@@ -15,7 +15,7 @@
         {{ announcement.number }}<br>
         {{ announcement.date_theft }}<br>
         {{ announcement.description }}<br>
-        {{ announcement.author }}<br>
+        <a href="{% url 'use:view_profile' %}">{{ announcement.author }}<br></a>
         {{ announcement.created }}<br>
 
     {% endfor %}
