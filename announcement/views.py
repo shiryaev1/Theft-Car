@@ -7,7 +7,13 @@ from announcement.models import Announcement
 
 
 def announcement_list(request):
-    announcements = Announcement.objects.all()
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        announcements = Announcement.objects.filter(
+            mark__mark__icontains=search_query)
+    else:
+        announcements = Announcement.objects.all()
     user = request.user
     return render(request, 'announcement/announcement_list.html', locals())
 

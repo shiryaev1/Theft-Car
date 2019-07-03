@@ -183,10 +183,13 @@
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
+              <form action="{% url 'announcement:announcement-list' %}" class="form-inline my-2 my-lg-0">
+
+                <input class="input-group-btn" type="search" name="search">
+                    <button class="btn btn-secondary" type="submit">Go!</button>
+                </input>
+              </form>
+
             </div>
           </div>
         </div>
