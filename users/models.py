@@ -11,6 +11,7 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=300, blank=True)
     born = models.DateField(null=True, blank=True)
     email = models.EmailField()
+    image = models.ImageField(upload_to='media/user_image', default='')
     # announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE)
 #
 #
