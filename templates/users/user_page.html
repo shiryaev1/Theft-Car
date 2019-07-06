@@ -96,11 +96,16 @@
                         </div>
                         <div class="col-xs-12 col-sm-8">
                            <ul class="list-group">
-                              <li class="list-group-item">{{ user.first_name }}</li>
-                              <li class="list-group-item">{{ user.last_name }}</li>
-                              <li class="list-group-item">Google Inc. </li>
-                              <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000 </li>
-                              <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                               {% if user.first_name %}
+                                  <li class="list-group-item">{{ user.first_name }}</li>
+                                  <li class="list-group-item">{{ user.last_name }}</li>
+                                  <li class="list-group-item">Google Inc. </li>
+                                  <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000 </li>
+                                  <li class="list-group-item"><i class="fa fa-envelope"></i>{{ user.email }}</li>
+                               {% else %}
+                                   <li class="list-group-item">Anonymous</li>
+                                  <li class="list-group-item">User</li>
+                               {% endif %}
                            </ul>
                         </div>
                      </div>

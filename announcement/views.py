@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
@@ -14,7 +15,8 @@ def announcement_list(request):
             mark__mark__icontains=search_query)
     else:
         announcements = Announcement.objects.all()
-    user = request.user
+    users = User.objects.all()
+
     return render(request, 'announcement/announcement_list.html', locals())
 
 
