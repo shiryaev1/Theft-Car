@@ -1,5 +1,6 @@
 import uuid
 
+from django.contrib.auth.models import User
 from django.db import models
 
 from cars.models import Car, ModelCar
@@ -21,7 +22,8 @@ class Announcement(models.Model):
     color = models.CharField(max_length=24)
     number = models.IntegerField()
     date_theft = models.DateTimeField()
-    description = models.CharField(max_length=256)
+    description = models.CharField(max_length=256, blank=True)
+    author = models.ForeignKey(User, default=None, null=True, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     update = models.DateTimeField(auto_now_add=False, auto_now=True)
 

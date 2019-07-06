@@ -1,21 +1,45 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import View
 from django.shortcuts import redirect
 # from announcement.models import *
-from announcement.forms import PostForm
+from announcement.forms import AnnouncementForm
+from announcement.models import Announcement
 
 
-class PostCreate(View):
-    def get(self,request):
-        form = PostForm()
+def announcement_list(request):
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        announcements = Announcement.objects.filter(
+            mark__mark__icontains=search_query)
+    else:
+        announcements = Announcement.objects.all()
+    users = User.objects.all()
+
+    return render(request, 'announcement/announcement_list.html', locals())
+
+
+# def user_page(request):
+    # # if pk
+    # user = request.user
+    # announcements = Announcement.objects.filter(author_id=user.id)
+    # # announcements = Announcement.objects.all()
+    # return render(request, 'users/user_page.html', locals())
+
+
+class AnnouncementCreate(View):
+
+    def get(self, request):
+        form = AnnouncementForm()
         return render(request, 'announcement/announcement.html',
                       context={'form': form})
 
     def post(self,request):
-        bount_form = PostForm(request.POST)
+        bount_form = AnnouncementForm(request.POST)
         if bount_form.is_valid():
-            bount_form.save()
-            return redirect('post:post_create_url')
+            bount_form.save(request.user)
+            return redirect('use:view_profile')
         else:
             print(bount_form.errors)
         context = {'form': bount_form}

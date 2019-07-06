@@ -1,12 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
-    <form action="{% url 'post:post_create_url' %}" method="post" enctype="multipart/form-data">
+    {% block base %}
+    <form action="{% url 'announcement:announcement_create_url' %}" method="post" enctype="multipart/form-data" name='csrfmiddlewaretoken'>
         {% csrf_token %}
         {% for field in form %}
             <div class="form-group">
@@ -22,6 +18,7 @@
         <button type="submit" class="btn btn-dark">Create post</button>
     </form>
 
+    {% endblock %}
 </body>
 </html>
 

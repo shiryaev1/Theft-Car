@@ -1,0 +1,12 @@
+.textInput{
+    position: relative;
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 30px;
+}
+input[type=text] {
+    position: relative;
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 30px;
+}
