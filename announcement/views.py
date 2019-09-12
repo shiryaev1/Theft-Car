@@ -39,7 +39,7 @@ class AnnouncementCreate(View):
         bount_form = AnnouncementForm(request.POST)
         if bount_form.is_valid():
             bount_form.save(request.user)
-            return redirect('use:view_profile')
+            return redirect('client:view_profile')
         else:
             print(bount_form.errors)
         context = {'form': bount_form}

@@ -46,7 +46,7 @@
        </div><br>
 
 
-        <p> Author: <a href="{% url 'use:view_profile_with_pk' pk=announcement.author.id %}">
+        <p> Author: <a href="{% url 'client:view_profile_with_pk' pk=announcement.author.id %}">
            {{ announcement.author }}<br></a>
             Created: {{ announcement.created }}<br></p>
       {% endfor %}

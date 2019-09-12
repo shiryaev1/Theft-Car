@@ -4,7 +4,7 @@ from users import views
 # from users.views import LoginFormView
 from users.views import UploadPhoto
 
-app_name = 'use'
+app_name = 'client'
 
 urlpatterns = [
 
